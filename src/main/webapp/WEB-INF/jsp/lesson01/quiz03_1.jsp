@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ex02</title>
+<title>JSP연동 연습문제</title>
 </head>
 <body>
 	<h1>리스트 기억 나시죠?</h1>
