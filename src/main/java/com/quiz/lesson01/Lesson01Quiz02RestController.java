@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/lesson01/quiz02")
 @RestController
-public class Lesson02Quiz02RestController {
+public class Lesson01Quiz02RestController {
 	@RequestMapping("/1")
 	public List<Map<String, Object>> quiz02_1() {
 		List<Map<String, Object>> result = new ArrayList<>();
