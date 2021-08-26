@@ -9,7 +9,7 @@ import com.quiz.lesson02.dao.StoreDAO;
 import com.quiz.lesson02.model.Store;
 
 @Service
-public class StoreBO {
+public class StoreBO { // 데이터를 가공 business object
 	@Autowired
 	private StoreDAO storeDAO;
 	
