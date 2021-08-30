@@ -9,5 +9,7 @@
  		FROM
  			`store`
  	</select>
- 
+ 	<select id="">
+ 	
+ 	</select>
  </mapper>

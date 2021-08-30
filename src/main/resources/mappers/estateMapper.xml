@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.quiz.lesson03.dao.EstateDAO">
+ 	<select id="selectEstateById" parameterType="int" resultType="com.quiz.lesson03.model.Estate">
+		SELECT
+			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		where
+			`id` = #{id}
+	</select>
+	
+	
+	
+	<select id="selectEstateListByRentPrice" parameterType="int" resultType="com.quiz.lesson03.model.Estate">
+		SELECT
+			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		where
+		<![CDATA[
+			`rentPrice` < #{rentPrice}
+			]]>
+	</select>
+	
+	
+	
+	<select id="selectEstateListByAreaAndPirce" parameterType="map" resultType="com.quiz.lesson03.model.Estate">
+		SELECT
+			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		where
+		<![CDATA[
+			`type` = '매매'
+			AND `area` >= #{area}
+			AND `price` <= #{price}
+			]]>
+	</select>
+	
+	
+	
+	<insert id="insertEstate" parameterType="com.quiz.lesson03.model.Estate">
+		INSERT INTO `real_estate`
+		(
+			`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+			, NOW()
+			, NOW()
+		)
+	</insert>
+	
+	
+	
+	<insert id="insertEstateAsField" parameterType="map">
+		INSERT INTO `real_estate`
+		(
+			`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+			, NOW()
+			, NOW()
+		)
+	</insert>
+	
+ </mapper>
