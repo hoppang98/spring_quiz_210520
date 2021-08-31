@@ -29,7 +29,15 @@ public class EstateBO {
 		return estateDAO.insertEstate(estate);
 	}
 	
-	public int addEstateAsField(int realtorId, String address, int area, String type, int price, int rentPrice) {
+	public int addEstateAsField(int realtorId, String address, int area, String type, int price, Integer rentPrice) {
 		return estateDAO.insertEstateAsField(realtorId, address, area, type, price, rentPrice);
+	}
+	
+	public int updateEstate(int id, String type, int price) {
+		return estateDAO.updateEstate(id, type, price);
+	}
+	
+	public int deleteEstateById(int id) {
+		return estateDAO.deleteEstateById(id);
 	}
 }

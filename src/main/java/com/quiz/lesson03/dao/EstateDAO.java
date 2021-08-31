@@ -27,4 +27,11 @@ public interface EstateDAO {
 			@Param("type") String type,
 			@Param("price") int price,
 			@Param("rentPrice") int rentPrice);
+	
+	public int updateEstate(
+			@Param("id") int id,
+			@Param("type") String type,
+			@Param("price") int price);
+	
+	public int deleteEstateById(int id);
 }
