@@ -24,13 +24,16 @@ public class NewSellerController {
 		return "lesson04/addSeller";
 	}
 	
+	// http://localhost/lesson04/quiz01/add_seller - url를 직접 치고 들어가는 방식은 get방식이라 치고 들어가면 오류가 나온다, 위에서 넘어가야함
 	@PostMapping("/add_seller")
 	public String addSeller(
+			//파라미터로 데이터 받기
 			@RequestParam("nickname") String nickname,
 			@RequestParam("profileImage") String profileImage,
 			@RequestParam("temperature") double temperature
 			) {
 		
+		// 데이터들을 DB에 insert
 		newSellerBO.addNewSeller(nickname, profileImage, temperature);
 		
 		return "lesson04/afterAddSeller";
@@ -48,7 +51,7 @@ public class NewSellerController {
 			) {
 		
 		NewSeller seller = null;
-		if (id = null) {
+		if (id == null) {
 			seller = newSellerBO.getLastNewSeller();
 		} else {
 			seller = newSellerBO.getNewSellerById(id);
