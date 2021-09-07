@@ -13,24 +13,26 @@
 <title>JSTL Core 라이브러리 (2)</title>
 </head>
 <body>
+<div class="container">
 	<h1>HOT 5</h1>
 	<table class="table text-center">
 		<thead>
 			<tr>
-				<th><strong>순위</strong></th>
-				<th><strong>제목</strong></th>
+				<th>순위</th>
+				<th>제목</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="musicRanking" items="${musicRanking}" varStatus="status">
+			<c:forEach var="Rank" items="${musicRanking}" varStatus="status">
 			<tr>
 				<td>${status.count}</td>
-				<td>${musicRanking}</td>
+				<td>${Rank}</td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	
+
+
 	<h1>멤버십</h1>
 	<table class="table text-center">
 		<thead>
@@ -46,12 +48,33 @@
 						<tr>
 							<td>${member.name}</td>
 							<td>${member.phoneNumber}</td>
-							<td>${member.grade}</td>
-							<td>${member.point}</td>
+							<td>
+								<c:choose>
+									<c:when test="${member.grade eq 'VIP'}">
+										<span class="text-danger">${member.grade}</span>
+									</c:when>
+									<c:when test="${member.grade eq 'GOLD'}">
+										<span class="text-warning">${member.grade}</span>
+									</c:when>
+									<c:otherwise>
+										${member.grade}
+									</c:otherwise>
+								</c:choose>	
+							</td>
+							<td>
+								<c:choose>
+									<c:when test="${member.point >= 5000}">
+										<span class="text-success">${member.point}</span>
+									</c:when>
+									<c:otherwise>
+										${member.point}
+									</c:otherwise>
+								</c:choose>
+							</td>
 						</tr>
-				
 			</c:forEach>
 		</tbody>
 	</table>
+</div>
 </body>
 </html>
