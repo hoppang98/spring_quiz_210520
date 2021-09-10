@@ -26,11 +26,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="candidates" items="${candidates}" varStatus="status">
+				<c:forEach var="candidate" items="${candidates}" varStatus="status">
 				<tr>
 					<td>${status.count}</td>
-					<td><fmt:formatNumber value="${candidates}" type="number" /></td>
-					<td><fmt:formatNumber value="${candidates / 1000000}" type="percent" /></td>
+					<td><fmt:formatNumber value="${candidate}" type="number" /></td>
+					<td><fmt:formatNumber value="${candidate / totalVote}" type="percent" /></td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -48,12 +48,15 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach var="cardBill" items="${cardBills}" varStatus="status">
+			<c:forEach var="cardBill" items="${cardBills}">
 				<fmt:parseDate value="${cardBill.date}" pattern="yyyy-mm-dd" var="date"/>
 				<tr>
 					<td>${cardBill.store}</td>
 					<td><fmt:formatNumber value="${cardBill.pay}" type="currency" /></td>
-					<td><fmt:formatDate value="${date}" pattern="yyyy년 m월 d일" /></td>
+					<td>
+						<fmt:parseDate value="${cardBill.date}" pattern="yyyy-mm-dd" var="date" />
+						<fmt:formatDate value="${date}" pattern="yyyy년mm월dd일" />
+					</td>
 					<td>${cardBill.installment}</td>
 				</tr>
 			</c:forEach>

@@ -17,9 +17,14 @@ public class Lesson05Quiz03Controller {
 		candidates.add(263001);
 		candidates.add(173942); 
 		candidates.add(563057); 
-		
+		// 총 득표율을 서버가 내리게 하고 jsp 뷰에서는 데이터를 뿌리는 규칙만 갖고 있게 하는 구조
+
+//		int total = 0;
+//		for (Integer candidate : candidates) {
+//			total += candidate;
+//		} - 이런 방법도 있다
 		model.addAttribute("candidates", candidates);
-		
+		model.addAttribute("totalVote", 1000000);
 		
 		
 		List<Map<String, Object>> cardBills = new ArrayList<>();
